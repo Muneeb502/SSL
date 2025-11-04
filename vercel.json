@@ -1,18 +1,29 @@
 {
   "version": 2,
-  "functions": {
-    "backend/main.py": {
-      "runtime": "@vercel/python@3.9"
-    }
-  },
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/backend/main.py"
+      "src": "backend/main.py",
+      "use": "@vercel/python"
     },
     {
-      "source": "/(.*)",
-      "destination": "/frontend/index.html"
+      "src": "frontend/**",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "frontend" }
     }
-  ]
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/index.html"
+    }
+  ],
+  "functions": {
+    "backend/main.py": {
+      "runtime": "python3.12"
+    }
+  }
 }

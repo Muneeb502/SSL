@@ -2,13 +2,12 @@
   "version": 2,
   "functions": {
     "backend/main.py": {
-      "runtime": "python3.12",
-      "maxDuration": 30
+      "runtime": "@vercel/python@3.12"
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "destination": "/backend/main.py"
     },
     {

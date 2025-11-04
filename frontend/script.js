@@ -97,7 +97,7 @@ saveDomain.onclick = async () => {
   saveDomain.textContent = "Adding...";
 
   try {
-    await fetch(`/domains`, {
+    await fetch(`/api/domains`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ domain })
@@ -116,6 +116,7 @@ saveDomain.onclick = async () => {
 // // Auto-refresh every 30s
 // setInterval(loadData, 30000);
 // loadData(); // Initial load
+
 
 
 

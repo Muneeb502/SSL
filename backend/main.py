@@ -188,13 +188,13 @@ def save_json(path, data):
         raise
 
 # GET: List domains
-@app.get("/domains")
+@app.get("/api/domains")
 def get_domains():
     data = load_json(DOMAINS_FILE)
     return data
 
 # POST: Add domain + check SSL
-@app.post("/domains")
+@app.post("/api/domains")
 def add_domain(domain: dict):
     domain_name = domain.get("domain", "").strip().lower()
     if not domain_name:
@@ -233,7 +233,7 @@ def add_domain(domain: dict):
     }
 
 # Test all
-@app.post("/test-all")
+@app.post("/api/test-all")
 def test_all():
     log.info("Test All triggered")
     domains = load_json(DOMAINS_FILE)
@@ -246,9 +246,10 @@ def test_all():
     return results
 
 # Get status
-@app.get("/status")
+@app.get("/api/status")
 def get_status():
     return load_json(STATUS_FILE)
 
 # Serve frontend
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
+
+app.mount("/api/", StaticFiles(directory="../frontend", html=True), name="frontend")

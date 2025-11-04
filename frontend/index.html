@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SSL Certificate Maintenance</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>SSL Certification & Maintenance</h1>
+    <div class="header-buttons">
+      <button id="addBtn">+ Add Domain</button>
+      <button id="settingsBtn">Settings</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Summary Cards -->
+    <div class="cards">
+      <div class="card">
+        <h3>Total Domains</h3>
+        <p id="total">0</p>
+        <small>monitored</small>
+      </div>
+      <div class="card valid">
+        <h3>Valid Certificates</h3>
+        <p id="valid">0</p>
+        <small>no action needed</small>
+      </div>
+      <div class="card warning">
+        <h3>Expiring Soon</h3>
+        <p id="soon">0</p>
+        <small>&lt; 30 days</small>
+      </div>
+      <div class="card danger">
+        <h3>Expired</h3>
+        <p id="expired">0</p>
+        <small>requires attention</small>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+      <div class="table-header">
+        <h2>Domain Status</h2>
+        <button id="testBtn">Test All</button>
+      </div>
+      <table id="domainTable">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Status</th>
+            <th>Expires</th>
+            <th>Days Remaining</th>
+            <th>Last Checked</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Add Domain Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">x</span>
+      <h3>Add New Domain</h3>
+      <input type="text" id="domainInput" placeholder="example.com" />
+      <button id="saveDomain">Add</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
